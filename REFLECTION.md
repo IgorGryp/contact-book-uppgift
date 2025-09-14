@@ -19,7 +19,7 @@ Den andra gruppen testade vår tutorial och gav följande feedback:
 
 - README:n är tydlig och lätt att följa.
 - Koden är enkel och lätt att förstå.
-- Bra exempel på hur man lägger till både personer och företag.
+- Bra exempel på hur man lägger till personer.
 
 **Förbättringsförslag:**
 
@@ -29,4 +29,8 @@ Den andra gruppen testade vår tutorial och gav följande feedback:
 **Hur vi hanterade feedbacken:**
 
 - Vi diskuterade och planerade att separera logik i funktioner och eventuellt egna moduler, men för skoluppgiftens omfattning behöll vi allt i `main.ts`.
-- Vi lade till enklare felkontroller i formuläret, t.ex. att namn och telefonnummer måste fyllas i, vilket gör programmet mer robust och minskar risken för ogiltig data.
+- Eftersom alla fält i formuläret är `required` i HTML behöver vi inte längre kontrollera tomma fält i JavaScript.
+- Vi förbättrade istället felkontrollen genom att:
+  - Kontrollera att telefonnummer följer ett korrekt format (endast siffror och bindestreck).
+  - Lägga till enkel validering av e-postadress för att säkerställa att den är giltig.
+- Dessa förbättringar gör programmet mer robust och minskar risken för ogiltig data.
