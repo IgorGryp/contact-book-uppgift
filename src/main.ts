@@ -1,6 +1,7 @@
 import './style.css';
 
 // ----- Types & Interfaces ----- //
+
 type PhoneNumber = string; // Alias för en string som ska representera ett telefonnummer
 type Email = string; // Alias för en string som ska representera ett e-postadresser
 
@@ -55,13 +56,32 @@ document
   .querySelector<HTMLFormElement>('#contact-form')!
   .addEventListener('submit', (e) => {
     e.preventDefault(); // Stoppar sidan från att laddas om
-    const name = document.querySelector<HTMLInputElement>('#name')!.value;
-    const phone = document.querySelector<HTMLInputElement>('#phone')!.value;
-    const email = document.querySelector<HTMLInputElement>('#email')!.value;
+    const name = document
+      .querySelector<HTMLInputElement>('#name')!
+      .value.trim();
+    const phone = document
+      .querySelector<HTMLInputElement>('#phone')!
+      .value.trim();
+    const email = document
+      .querySelector<HTMLInputElement>('#email')!
+      .value.trim();
 
     /// Kollar att namn och telefon inte är tomma
     if (!name || !phone) {
       alert('Name and phone are required!');
+      return;
+    }
+
+    // Validerar att telefonnumret bara innehåller siffror och bindestreck
+    const phoneRegex = /^[0-9-]+$/;
+    if (!phoneRegex.test(phone)) {
+      alert('Phone number can only contain digits and hyphens!');
+      return;
+    }
+
+    // Validerar e-postformatet om en e-postadress är angiven
+    if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+      alert('Please enter a valid email address!');
       return;
     }
 
